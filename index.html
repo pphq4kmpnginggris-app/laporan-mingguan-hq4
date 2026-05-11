@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Mingguan - PP HQ Putri 4</title>
+
+<style>
+  :root {
+    --primary: #4834d4;
+    --secondary: #218c74;
+    --accent: #d63031;
+    --border-color: #cbd5e0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: skyblue;
+    margin: 0;
+    padding: 20px;
+    color: #2d3436;
+  }
+
+  .container {
+    max-width: 650px;
+    margin: auto;
+    background: #78e1de;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 2px solid var(--border-color);
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    color: var(--primary);
+    margin: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .header p {
+    font-size: 20px;
+    color: #4a5568;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  .section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 3px solid #edf2f7;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  }
+
+  .sec-nama { border-color: #bee3f8; }
+  .sec-tahfizh { border-color: #c6f6d5; }
+  .sec-psikologi { border-color: #e9d8fd; }
+  .sec-keuangan { border-color: #feebc8; }
+  .sec-catatan { border-color: #fed7d7; }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 10px;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #718096;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 15px;
+    background: #f8fafc;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 40px;
+  }
+
+  button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .btn-make { background: var(--primary); }
+  .btn-copy { background: var(--secondary); }
+  .btn-clear { background: #f7fafc; color: #a0aec0; border: 2px solid #e2e8f0; }
+
+  #hasil-box {
+    margin-top: 40px;
+    background: #fffbef;
+    border: 3px dashed #f6ad55;
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  #output {
+    width: 100%;
+    height: 550px;
+    background: transparent;
+    border: none;
+    font-family: 'Segoe UI', Arial;
+    font-size: 15px;
+    line-height: 1.6;
+    resize: none;
+    color: #2d3436;
+  }
+
+  /* --- TAMBAHAN UNTUK TAMPILAN HP LEGA --- */
+  @media (max-width: 600px) {
+    body {
+      padding: 10px; /* Ruang luar lebih kecil */
+    }
+    .container {
+      padding: 15px; /* Ruang dalam lebih kecil agar lega */
+      border-radius: 15px;
+    }
+    .grid-2 {
+      grid-template-columns: 1fr; /* Jadi satu kolom agar tidak sempit */
+      gap: 15px;
+    }
+    .header h1 {
+      font-size: 20px;
+    }
+    .header p {
+      font-size: 16px;
+    }
+    .section {
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 15px;
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>📝 LAPORAN MINGGUAN <br> PERKEMBANGAN HAFALAN  DAN PERKEMBANGAN PSIKOLOGI SANTRI</h1>
+    <p>PP HAMALATUL QURAN PUTRI 4</p>
+  </div>
+
+  <!-- Nama -->
+  <div class="section sec-nama">
+    <label>Nama Lengkap Ananda</label>
+    <input id="nama" placeholder="Ketik nama lengkap...">
+  </div>
+
+  <!-- Tahfizh -->
+  <div class="section sec-tahfizh">
+    <h3>📖 Progress Tahfizh Mingguan</h3>
+    <div class="grid-2" style="margin-bottom: 15px;">
+      <div>
+        <label>Awal Setoran</label>
+        <input id="awal_hafalan" placeholder="Contoh: Juz 2 hal 14">
+      </div>
+      <div>
+        <label>Akhir Setoran</label>
+        <input id="akhir_hafalan" placeholder="Contoh: Juz 2 hal 20">
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div>
+        <label>Target Mingguan</label>
+        <input id="target_mingguan" placeholder="Contoh: 6 Halaman">
+      </div>
+      <div>
+        <label>Keterangan Capaian</label>
+        <select id="status_capaian">
+          <option value="Tercapai ✅">Tercapai</option>
+          <option value="Belum Tercapai ❌">Belum Tercapai</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top: 15px;">
+      <label>Perolehan Hafalan (Minggu Ini)</label>
+      <input id="perolehan_hafalan" placeholder="Contoh: 10 Juz 5 hal">
+    </div>
+  </div>
+
+  <!-- Psikologi -->
+  <div class="section sec-psikologi">
+    <h3>🌸 Perkembangan Psikologi</h3>
+    <div style="margin-bottom: 15px;">
+      <label>Poin Positif </label>
+      <textarea id="psikologi_pos" placeholder="Contoh: Mandiri, rajin tasmik..."></textarea>
+    </div>
+    <div>
+      <label>Poin Negatif (Catatan)</label>
+      <textarea id="psikologi_neg" placeholder="Contoh: Kurang disiplin waktu..."></textarea>
+    </div>
+  </div>
+
+  <!-- Administrasi -->
+  <div class="section sec-keuangan">
+    <h3>💰 Tagihan Administrasi</h3>
+    <div class="grid-2" style="margin-bottom: 15px;">
+      <div>
+        <label>Bulan SPP</label>
+        <select id="bulan_spp">
+          <option>Januari</option><option>Februari</option><option>Maret</option>
+          <option>April</option><option>Mei</option><option>Juni</option>
+          <option>Juli</option><option>Agustus</option><option>September</option>
+          <option>Oktober</option><option>November</option><option>Desember</option>
+        </select>
+      </div>
+      <div>
+        <label>Syahriyah</label>
+        <select id="status_spp">
+          <option value="✅ Lunas ">Lunas</option>
+          <option value="❌ Belum Lunas">Belum Lunas</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label> Daftar Ulang</label>
+      <select id="status_du">
+        <option value="✅ Lunas">Lunas</option>
+        <option value="❌ Belum Lunas">Belum Lunas</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Catatan Lain-lain -->
+  <div class="section sec-catatan">
+    <h3>📝 Informasi Lain-lain</h3>
+    <label>Catatan Tambahan (Kesehatan/Izin/dll)</label>
+    <textarea id="catatan_lain" placeholder="Contoh: Ananda sempat izin sakit, dll..."></textarea>
+  </div>
+
+  <!-- Waktu & Pembimbing -->
+  <div class="section">
+    <h3>👩‍🏫 Informasi Penutup</h3>
+    <div class="grid-2" style="margin-bottom: 15px;">
+      <div>
+        <label>Hari</label>
+        <select id="hari">
+          <option>Senin</option><option>Selasa</option><option>Rabu</option>
+          <option>Kamis</option><option>Jumat</option><option>Sabtu</option><option>Ahad</option>
+        </select>
+      </div>
+      <div>
+        <label>Tanggal</label>
+        <input id="tanggal" placeholder="Ketik tanggal...">
+      </div>
+    </div>
+    <label>Ustadz/Ustadzah Pembimbing</label>
+    <select id="ustazah">
+      <option disabled selected>-- Pilih Nama --</option>
+      <option>Ustadz Auris</option>
+      <option>Ustazah Arifah Fitria</option>
+      <option>Ustazah A'yuniz zakiya</option>
+      <option>Ustazah Rima Niswa</option>
+      <option>Ustazah Durotun Nafisah</option>
+      <option>Ustazah Ayu Umairoh</option>
+    </select>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-make" onclick="generate()">✨ BUAT LAPORAN</button>
+    <button class="btn-copy" onclick="copyText()">📋 SALIN PESAN (WA)</button>
+    <button class="btn-clear" onclick="resetForm()">🔄 RESET FORM</button>
+  </div>
+
+  <div id="hasil-box">
+    <label>💌 HASIL PESAN UNTUK WALI SANTRI:</label>
+    <textarea id="output" readonly></textarea>
+  </div>
+</div>
+
+<script>
+  const d = new Date();
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const tglOtomatis = d.toLocaleDateString('id-ID', options);
+  
+  document.getElementById('tanggal').placeholder = tglOtomatis;
+  
+  const days = ['Ahad', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+  document.getElementById('hari').value = days[d.getDay()];
+  
+  const listBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  document.getElementById('bulan_spp').value = listBulan[d.getMonth()];
+
+  function generate() {
+    const tglInput = document.getElementById('tanggal').value || document.getElementById('tanggal').placeholder;
+    const v = (id) => document.getElementById(id).value || "-";
+
+    const report = 
+`*LAPORAN PERKEMBANGAN MINGGUAN SANTRI PPHQ PUTRI 4 AL KARIMA*
+
+Assalamu’alaikum warahmatullahi wabarakatuh 🌿✨
+
+Abah & Umi wali Santri dari ananda shalihah *${v('nama')}* tercinta, semoga kita semua senantiasa dalam lindungan Allah SWT. 🌸
+
+Izin menyampaikan laporan perkembangan mingguan ananda dari *PP Hamalatul Quran Putri 4*:
+
+1️⃣ 📖 *PERKEMBANGAN TAHFIZH*
+- Awal Setoran: ${v('awal_hafalan')}
+- Akhir Setoran: ${v('akhir_hafalan')}
+- Target Mingguan: ${v('target_mingguan')}
+- Status Capaian: *${v('status_capaian')}* 📝
+- *Perolehan Hafalan: ${v('perolehan_hafalan')}* 📈
+
+2️⃣ 🌸 *PERKEMBANGAN PSIKOLOGI ANANDA*
+✅ *Perkembangan Positif:*
+${v('psikologi_pos')}
+
+⚠️ *Perkembangan Negatif:*
+${v('psikologi_neg')}
+
+3️⃣ 💰 *STATUS ADMINISTRASI*
+- Syahriyah (${v('bulan_spp')}): *${v('status_spp')}*
+- Daftar Ulang: *${v('status_du')}*
+_Jazaakumullahu khairan atas dukungannya._ 🤝
+
+4️⃣ 📝 *CATATAN LAIN-LAIN*
+${v('catatan_lain')}
+
+demikian yang bisa kami laporkan dari perkembangan ananda, kami selalu terbuka untuk berdiskusi demi kebaikan ananda, atas kerjasamanya kami ucapkan trimakasih. 🙏✨
+
+📅 *${v('hari')}, ${tglInput}*
+
+💌 *Salam Hangat,*
+Pembimbing Ananda
+*${v('ustazah')}*
+
+Wassalamu’alaikum warahmatullahi wabarakatuh 🌸🌈`;
+
+    document.getElementById('output').value = report;
+    document.getElementById('hasil-box').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function copyText() {
+    const out = document.getElementById('output');
+    if (!out.value) return alert("Buat laporan dulu ya! 😊");
+    out.select();
+    document.execCommand('copy');
+    alert("Laporan berhasil disalin! 💖");
+  }
+
+  function resetForm() {
+    if(confirm("Apakah ingin menghapus semua data?")) location.reload();
+  }
+</script>
+
+</body>
+</html>
